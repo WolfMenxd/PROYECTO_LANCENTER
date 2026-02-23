@@ -1,11 +1,13 @@
-/* RESET */
+/* ===================================================== */
+/* ===================== RESET GENERAL ================= */
+/* ===================================================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* FONDO FUTURISTA SIN IMAGEN */
 body {
     font-family: 'Segoe UI', sans-serif;
     background: radial-gradient(circle at center, #0f2027, #0b0c1a 70%);
@@ -13,59 +15,187 @@ body {
     min-height: 100vh;
 }
 
-/* NAVBAR */
+/* ===================================================== */
+/* ===================== NAVBAR ======================== */
+/* ===================================================== */
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 40px;
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(10px);
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo {
     font-size: 22px;
     font-weight: bold;
     letter-spacing: 2px;
-}
-
-nav a {
-    color: #ccc;
-    text-decoration: none;
-    margin-left: 20px;
-    transition: 0.3s;
-}
-
-nav a:hover {
     color: #00eaff;
 }
 
-.btn {
+nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Links generales */
+nav a,
+.dropbtn {
+    color: #ccc;
+    text-decoration: none;
+    background: none;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    position: relative;
+    transition: 0.3s ease;
+}
+
+/* Efecto subrayado */
+nav a::after,
+.dropbtn::after {
+    content: "";
+    display: block;
+    height: 2px;
+    background: #00eaff;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+nav a:hover::after,
+.dropbtn:hover::after {
+    transform: scaleX(1);
+}
+
+nav a:hover,
+.dropbtn:hover {
+    color: #00eaff;
+}
+
+/* ===================================================== */
+/* ===================== DROPDOWN ====================== */
+/* ===================================================== */
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(0,0,0,0.95);
+    min-width: 180px;
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 5px 0;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 12px 15px;
+    transition: 0.3s ease;
+}
+
+.dropdown-content a:hover {
     background: #00eaff;
     color: black;
-    padding: 8px 14px;
-    border-radius: 6px;
 }
 
-.btn:hover {
-    background: white;
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
-/* HERO */
+/* ===================================================== */
+/* ===================== HERO (INDEX) ================== */
+/* ===================================================== */
+
 .hero {
     text-align: center;
-    padding: 60px 20px;
+    padding: 120px 20px;
 }
 
-/* TARJETA HORARIOS */
-.card {
-    background: rgba(255,255,255,0.08);
-    padding: 30px;
-    width: 320px;
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+    color: #00eaff;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #ccc;
+}
+
+/* ===================================================== */
+/* ===================== SECCIONES BASE ================= */
+/* ===================================================== */
+
+.contenido,
+.seccion {
+    padding: 60px 20px;
+    max-width: 1100px;
     margin: auto;
+}
+
+.seccion {
+    margin-top: 40px;
     border-radius: 12px;
-    backdrop-filter: blur(15px);
-    box-shadow: 0 0 25px rgba(0,234,255,0.2);
+}
+
+/* ===================================================== */
+/* ===================== NOSOTROS ====================== */
+/* ===================================================== */
+
+.bloque-principal {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.bloque-principal h1 {
+    font-size: 38px;
+    margin-bottom: 20px;
+    color: #00eaff;
+}
+
+.bloque-principal p {
+    font-size: 18px;
+    color: #ccc;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Bloques secundarios */
+.bloques-secundarios {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ===================================================== */
+/* ===================== CARDS GENERALES =============== */
+/* ===================================================== */
+
+.card {
+    background: rgba(0,0,0,0.6);
+    padding: 30px;
+    border-radius: 10px;
+    flex: 1 1 400px;
+    max-width: 500px;
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px #00eaff80;
 }
 
 .card h2 {
@@ -74,53 +204,191 @@ nav a:hover {
 }
 
 .card p {
-    margin: 8px 0;
+    color: #ccc;
+    line-height: 1.6;
 }
 
-/* LOCALES */
-.titulo-locales {
-    margin: 70px 0 30px;
-    font-size: 24px;
-    letter-spacing: 2px;
+/* Imagen dentro de card */
+.imagen-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: 0.3s ease;
 }
 
-.locales {
+.card:hover .imagen-card img {
+    box-shadow: 0 0 20px #00eaff80;
+}
+
+/* ===================================================== */
+/* ===================== BLOQUE FLEX =================== */
+/* ===================================================== */
+
+.bloque-flex {
     display: flex;
-    justify-content: center;
-    gap: 30px;
+    align-items: center;
+    gap: 40px;
     flex-wrap: wrap;
 }
 
-.local-card {
-    background: rgba(255,255,255,0.08);
-    padding: 20px;
-    width: 280px;
+.imagen img {
+    width: 350px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #00eaff50;
+}
+
+.texto {
+    flex: 1;
+}
+
+/* ===================================================== */
+/* ===================== ALQUILER ====================== */
+/* ===================================================== */
+
+.planes {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.plan-card {
+    position: relative;
+    background: rgba(0,0,0,0.6);
+    padding: 30px;
     border-radius: 12px;
-    backdrop-filter: blur(10px);
-    transition: 0.3s;
+    width: 300px;
+    text-align: center;
+    transition: 0.3s ease;
 }
 
-.local-card:hover {
+.plan-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 0 20px rgba(0,234,255,0.4);
+    box-shadow: 0 0 30px #00eaff60;
 }
 
-.local-card h3 {
+.plan-card h2 {
+    color: #00eaff;
+    margin-bottom: 20px;
+}
+
+.plan-card ul {
+    list-style: none;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+.plan-card ul li {
+    margin-bottom: 8px;
+}
+
+.precio {
+    font-size: 20px;
+    font-weight: bold;
     margin-bottom: 15px;
 }
 
-.map-placeholder {
-    height: 160px;
-    background: linear-gradient(45deg, #1a1a2e, #16213e);
-    border-radius: 8px;
+/* Botones */
+.btn {
+    background: #00eaff;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease;
 }
 
-/* FOOTER */
+.btn:hover {
+    background: white;
+}
+
+/* Plan destacado */
+.destacado {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px #00eaff40;
+}
+
+.badge {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background: #00eaff;
+    color: black;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+/* ===================================================== */
+/* ===================== CATEGORÍAS ==================== */
+/* ===================================================== */
+
+.categoria {
+    margin-top: 60px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #00eaff;
+    font-size: 28px;
+}
+
+.gaming {
+    background: rgba(0, 234, 255, 0.05);
+}
+
+.workstation {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* ===================================================== */
+/* ===================== FOOTER ======================== */
+/* ===================================================== */
+
 footer {
     text-align: center;
     padding: 20px;
+    background: rgba(0,0,0,0.7);
     margin-top: 80px;
-    background: rgba(0,0,0,0.6);
     font-size: 14px;
     color: #aaa;
+}
+
+/* ===================================================== */
+/* ===================== RESPONSIVE ==================== */
+/* ===================================================== */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .bloque-principal h1 {
+        font-size: 28px;
+    }
+
+    .bloque-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .imagen img {
+        width: 100%;
+        max-width: 350px;
+    }
 }

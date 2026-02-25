@@ -48,3 +48,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+
+// Toggle de especificaciones
+function toggleSpecs(button) {
+    const specsBox = button.nextElementSibling;
+
+    if (specsBox.style.maxHeight) {
+        // Si ya está abierto, cerrarlo
+        specsBox.style.maxHeight = null;
+        specsBox.classList.remove('active');
+    } else {
+        // Abrir con la altura real del contenido
+        specsBox.style.maxHeight = specsBox.scrollHeight + "px";
+        specsBox.classList.add('active');
+    }
+}

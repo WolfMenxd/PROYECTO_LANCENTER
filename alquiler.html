@@ -7,99 +7,245 @@
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <header class="navbar">
-        <div class="logo">GAME GXN</div>
+<header class="navbar">
+    <div class="logo">GAME GXN</div>
 
-        <nav>
-            <a href="index.html">Inicio</a>
-            <a href="nosotros.html">Nosotros</a>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="nosotros.html">Nosotros</a>
 
-            <div class="dropdown">
-                <button class="dropbtn">Servicios ▾</button>
-                <div class="dropdown-content">
-                    <a href="alquiler.html">Alquilar PC</a>
-                    <a href="carta.html">Carta</a>
+        <div class="dropdown">
+            <button class="dropbtn">Servicios ▾</button>
+            <div class="dropdown-content">
+                <a href="alquiler.html">Alquilar PC</a>
+                <a href="carta.html">Carta</a>
+            </div>
+        </div>
+
+        <a href="locales.html">Horarios / Locales</a>
+        <a href="faq.html">Preguntas Frecuentes</a>
+    </nav>
+</header>
+
+<main class="contenido">
+
+    <section class="bloque-principal">
+        <h1>Alquiler de Equipos</h1>
+        <p>Selecciona el tipo de estación según tu necesidad.</p>
+    </section>
+
+    <!-- ================= GAMING ================= -->
+    <section class="seccion gaming">
+        <h2 class="categoria">Gaming</h2>
+
+        <div class="planes">
+
+            <!-- Bajo Rendimiento -->
+            <div class="plan-card">
+                <div class="imagen-card">
+                    <img src="imagenes/alquiler/pc_redimiento_bajo.png" alt="PC Bajo Rendimiento">
                 </div>
+
+                <h3>Bajo Rendimiento</h3>
+                <p>Ideal para juegos ligeros y uso casual.</p>
+
+                <button class="btn-specs" onclick="toggleSpecs(this)">Ver especificaciones</button>
+                <div class="specs-box">
+                    <ul>
+                        <li>Monitor 22” Full HD 60Hz</li>
+                        <li>Ryzen 3</li>
+                        <li>GTX 1660 Super 6GB</li>
+                        <li>8GB RAM</li>
+                        <li>SSD 1TB</li>
+                        <li>Periféricos gamer incluidos</li>
+                    </ul>
+                </div>
+
+                <div class="precio">S/ 2 por hora</div>
+                <button class="btn" onclick="abrirModal(2)">Reservar</button>
             </div>
 
-            <a href="locales.html">Horarios / Locales</a>
-            <a href="faq.html">Preguntas Frecuentes</a>
-        </nav>
-    </header>
+            <!-- Medio Rendimiento -->
+            <div class="plan-card destacado">
+                <div class="badge">⭐ Más Popular</div>
 
-    <!-- CONTENIDO -->
-    <main class="contenido">
-
-        <section class="bloque-principal">
-            <h1>Alquiler de Equipos</h1>
-            <p>Selecciona el tipo de estación según tu necesidad.</p>
-        </section>
-
-        <!-- ================= GAMING ================= -->
-        <section class="seccion gaming">
-
-            <h2 class="categoria">Gaming</h2>
-
-            <div class="planes">
-
-                <div class="plan-card">
-                    <h3>Bajo Rendimiento</h3>
-                    <p>Ideal para juegos ligeros y uso casual.</p>
-                    <div class="precio">S/ -- por hora</div>
-                    <button class="btn">Reservar</button>
+                <div class="imagen-card">
+                    <img src="imagenes/alquiler/pc_redimiento_medio.png" alt="PC Medio Rendimiento">
                 </div>
 
-                <div class="plan-card destacado">
-                    <div class="badge">⭐ Más Popular</div>
-                    <h3>Medio Rendimiento</h3>
-                    <p>Perfecto para la mayoría de juegos actuales.</p>
-                    <div class="precio">S/ -- por hora</div>
-                    <button class="btn">Reservar</button>
+                <h3>Medio Rendimiento</h3>
+                <p>Perfecto para la mayoría de juegos actuales.</p>
+
+                <button class="btn-specs" onclick="toggleSpecs(this)">Ver especificaciones</button>
+                <div class="specs-box">
+                    <ul>
+                        <li>Monitor 24” Full HD 100Hz</li>
+                        <li>Ryzen 5</li>
+                        <li>RTX 2060 6GB</li>
+                        <li>16GB RAM</li>
+                        <li>SSD 1TB</li>
+                        <li>Periféricos gamer incluidos</li>
+                    </ul>
                 </div>
 
-                <div class="plan-card">
-                    <h3>Alto Rendimiento</h3>
-                    <p>Experiencia competitiva en 144Hz+.</p>
-                    <div class="precio">S/ -- por hora</div>
-                    <button class="btn">Reservar</button>
-                </div>
-
+                <div class="precio">S/ 3.5 por hora</div>
+                <button class="btn" onclick="abrirModal(3.5)">Reservar</button>
             </div>
 
-        </section>
-
-        <!-- ================= WORKSTATION ================= -->
-        <section class="seccion workstation">
-
-            <h2 class="categoria">Workstation</h2>
-
-            <div class="planes">
-
-                <div class="plan-card">
-                    <h3>Oficina</h3>
-                    <p>Ideal para trabajos administrativos y estudio.</p>
-                    <div class="precio">S/ -- por hora</div>
-                    <button class="btn">Reservar</button>
+            <!-- Alto Rendimiento -->
+            <div class="plan-card">
+                <div class="imagen-card">
+                    <img src="imagenes/alquiler/pc_redimiento_alto.png" alt="PC Alto Rendimiento">
                 </div>
 
-                <div class="plan-card">
-                    <h3>Workstation Pro</h3>
-                    <p>Edición, renderizado y software de alto consumo.</p>
-                    <div class="precio">S/ -- por hora</div>
-                    <button class="btn">Reservar</button>
+                <h3>Alto Rendimiento</h3>
+                <p>Experiencia 2K en 144Hz.</p>
+
+                <button class="btn-specs" onclick="toggleSpecs(this)">Ver especificaciones</button>
+                <div class="specs-box">
+                    <ul>
+                        <li>Monitor 27” 2K 144Hz</li>
+                        <li>Ryzen 7</li>
+                        <li>RTX 4070 12GB</li>
+                        <li>32GB RAM</li>
+                        <li>SSD NVMe 1TB</li>
+                        <li>Periféricos gamer incluidos</li>
+                    </ul>
                 </div>
 
+                <div class="precio">S/ 5 por hora</div>
+                <button class="btn" onclick="abrirModal(5)">Reservar</button>
             </div>
 
-        </section>
+        </div>
+    </section>
 
-    </main>
+    <!-- ================= WORKSTATION ================= -->
+    <section class="seccion workstation">
+        <h2 class="categoria">Workstation</h2>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>© 2026 Game GXN - Todos los derechos reservados</p>
-    </footer>
+        <div class="planes">
+
+            <!-- Oficina -->
+            <div class="plan-card">
+                <div class="imagen-card">
+                    <img src="imagenes/alquiler/pc_oficina.png" alt="PC Oficina">
+                </div>
+
+                <h3>Oficina</h3>
+                <p>Ideal para trabajos administrativos y estudio.</p>
+
+                <button class="btn-specs" onclick="toggleSpecs(this)">Ver especificaciones</button>
+                <div class="specs-box">
+                    <ul>
+                        <li>Monitor 22” Full HD</li>
+                        <li>Ryzen 5 5600G</li>
+                        <li>Gráficos integrados</li>
+                        <li>16GB RAM</li>
+                        <li>SSD 1TB</li>
+                    </ul>
+                </div>
+
+                <div class="precio">S/ 1.5 por hora</div>
+                <button class="btn" onclick="abrirModal(1.5)">Reservar</button>
+            </div>
+
+            <!-- Workstation Pro -->
+            <div class="plan-card">
+                <div class="imagen-card">
+                    <img src="imagenes/alquiler/pc_workstation.png" alt="Workstation Pro">
+                </div>
+
+                <h3>Workstation Pro</h3>
+                <p>Edición, renderizado y software de alto consumo.</p>
+
+                <button class="btn-specs" onclick="toggleSpecs(this)">
+                    Ver especificaciones
+                </button>
+                <div class="specs-box">
+                    <ul>
+                        <li>Monitor 27” 4K IPS</li>
+                        <li>Ryzen 9 (12–16 núcleos)</li>
+                        <li>RTX 4080 16GB</li>
+                        <li>64GB RAM DDR5</li>
+                        <li>SSD NVMe 2TB</li>
+                        <li>Audífonos de producción</li>
+                    </ul>
+                </div>
+
+                <div class="precio">S/ 7 por hora</div>
+                <button class="btn" onclick="abrirModal(7)">Reservar</button>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<!-- FOOTER EMPRESARIAL -->
+<footer class="menu-inferior">
+    <div class="footer-container">
+        <div class="footer-secciones">
+
+            <!-- Información legal -->
+            <div class="footer-seccion">
+                <h4>Legal</h4>
+                <a href="#">Términos y Condiciones</a>
+                <a href="#">Política de Privacidad</a>
+            </div>
+
+            <!-- Ayuda y soporte -->
+            <div class="footer-seccion">
+                <h4>Ayuda</h4>
+                <a href="faq.html">Preguntas Frecuentes</a>
+                <a href="carta.html">Promociones</a>
+                <a href="locales.html">Contáctanos</a>
+            </div>
+
+            <!-- Redes sociales -->
+            <div class="footer-seccion">
+                <h4>Síguenos</h4>
+                <a href="https://www.facebook.com" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com" target="_blank">Instagram</a>
+                <a href="https://www.twitter.com" target="_blank">Twitter</a>
+            </div>
+
+        </div>
+
+        <div class="footer-copy">
+            &copy; 2026 Game GXN. Todos los derechos reservados.
+        </div>
+    </div>
+</footer>
+
+<!-- Archivo JS externo -->
+
+<script src="js/script_alquiler.js"></script>
+
+<!-- MODAL RESERVA -->
+<div class="modal" id="modalReserva">
+    <div class="modal-contenido">
+        <span class="cerrar" onclick="cerrarModal()">&times;</span>
+        <h2>Reserva tu equipo</h2>
+
+        <form id="formReserva">
+            <input type="text" id="nombre" placeholder="Nombres" required>
+            <input type="text" id="apellido" placeholder="Apellidos" required>
+            <input type="text" id="dni" placeholder="DNI" required>
+            <input type="email" id="correo" placeholder="Correo electrónico" required>
+            <input type="text" id="numero" placeholder="Número de teléfono" required>
+
+            <label>Horas a contratar:</label>
+            <input type="number" id="horas" min="1" value="1" required>
+
+            <p id="totalPagar">Total: S/ 0</p>
+
+            <button type="submit" class="btn">Confirmar Reserva</button>
+        </form>
+
+        <div id="codigoReserva" class="codigo-box"></div>
+    </div>
+</div>
 
 </body>
 </html>

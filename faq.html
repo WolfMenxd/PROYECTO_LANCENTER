@@ -2,65 +2,111 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game GXN - Preguntas Frecuentes</title>
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 
-<header class="navbar">
-    <div class="logo">GAME GXN</div>
-    <nav>
-        <a href="index.html">Inicio</a>
-        <a href="nosotros.html">Nosotros</a>
-        <div class="dropdown">
-            <button class="dropbtn">Servicios ▾</button>
-            <div class="dropdown-content">
-                <a href="alquiler.html">Alquilar PC</a>
-                <a href="carta.html">Carta</a>
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo">GAME GXN</div>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="nosotros.html">Nosotros</a>
+            <div class="dropdown">
+                <button class="dropbtn">Servicios ▾</button>
+                <div class="dropdown-content">
+                    <a href="alquiler.html">Alquilar PC</a>
+                    <a href="carta.html">Carta</a>
+                </div>
             </div>
+            <a href="locales.html">Horarios / Locales</a>
+            <a href="faq.html" class="active">Preguntas Frecuentes</a>
+        </nav>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="bloque-principal">
+        <h1>Preguntas Frecuentes</h1>
+        <p>Aquí respondemos las dudas más comunes de nuestros clientes.</p>
+
+        <!-- Tarjetas FAQ -->
+        <div class="faq-container">
+
+            <!-- FAQ #1 -->
+            <input type="checkbox" id="faq1" class="faq-toggle">
+            <label for="faq1" class="faq-label">¿Cómo puedo alquilar una PC?</label>
+            <div class="faq-content">
+                Solo debes ir a la sección <a href="alquiler.html">Alquilar PC</a>, elegir tu plan y realizar la reserva. Puedes pagar en línea o directamente en el local.
+            </div>
+
+            <!-- FAQ #2 -->
+            <input type="checkbox" id="faq2" class="faq-toggle">
+            <label for="faq2" class="faq-label">¿Qué horarios tienen los locales?</label>
+            <div class="faq-content">
+                Lunes a Jueves 12:00-22:00, Viernes y Sábado 12:00-00:00, Domingo 24H. Cada local tiene su ubicación específica que puedes consultar en <a href="locales.html">Horarios / Locales</a>.
+            </div>
+
+            <!-- FAQ #3 -->
+            <input type="checkbox" id="faq3" class="faq-toggle">
+            <label for="faq3" class="faq-label">¿Puedo traer mis propios periféricos?</label>
+            <div class="faq-content">
+                Sí, puedes traer tus propios periféricos, pero recuerda que los locales cuentan con equipos de alta gama para tu comodidad.
+            </div>
+
+            <!-- FAQ #4 -->
+            <input type="checkbox" id="faq4" class="faq-toggle">
+            <label for="faq4" class="faq-label">¿Se realizan torneos o eventos?</label>
+            <div class="faq-content">
+                Sí, organizamos torneos y eventos regularmente. Puedes revisar nuestra sección de noticias o redes sociales para enterarte de los próximos eventos.
+            </div>
+
+            <!-- FAQ #5 -->
+            <input type="checkbox" id="faq5" class="faq-toggle">
+            <label for="faq5" class="faq-label">¿Tienen membresías o planes recurrentes?</label>
+            <div class="faq-content">
+                Sí, contamos con planes recurrentes que ofrecen beneficios adicionales y descuentos en alquileres prolongados. Consulta la sección <a href="alquiler.html">Alquilar PC</a> para más detalles.
+            </div>
+
         </div>
-        <a href="locales.html">Horarios / Locales</a>
-        <a href="faq.html">Preguntas Frecuentes</a>
-    </nav>
-</header>
 
-<main class="bloque-principal">
-    <h1>Preguntas Frecuentes</h1>
-    <p>Aquí respondemos las dudas más comunes de nuestros clientes.</p>
+    </main>
 
-    <div class="bloques-secundarios">
+<!-- FOOTER EMPRESARIAL -->
+<footer class="menu-inferior">
+    <div class="footer-container">
+        <div class="footer-secciones">
 
-        <div class="card">
-            <h2>¿Cómo puedo alquilar una PC?</h2>
-            <p>Solo debes ir a la sección <a href="alquiler.html">Alquilar PC</a>, elegir tu plan y realizar la reserva. Puedes pagar en línea o directamente en el local.</p>
+            <!-- Información legal -->
+            <div class="footer-seccion">
+                <h4>Legal</h4>
+                <a href="#">Términos y Condiciones</a>
+                <a href="#">Política de Privacidad</a>
+            </div>
+
+            <!-- Ayuda y soporte -->
+            <div class="footer-seccion">
+                <h4>Ayuda</h4>
+                <a href="faq.html">Preguntas Frecuentes</a>
+                <a href="carta.html">Promociones</a>
+                <a href="locales.html">Contáctanos</a>
+            </div>
+
+            <!-- Redes sociales -->
+            <div class="footer-seccion">
+                <h4>Síguenos</h4>
+                <a href="https://www.facebook.com" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com" target="_blank">Instagram</a>
+                <a href="https://www.twitter.com" target="_blank">Twitter</a>
+            </div>
+
         </div>
 
-        <div class="card">
-            <h2>¿Qué horarios tienen los locales?</h2>
-            <p>Los horarios generales son: Lunes a Jueves 12:00-22:00, Viernes y Sábado 12:00-00:00, y Domingo 24H. Cada local tiene su ubicación específica que puedes consultar en <a href="locales.html">Horarios / Locales</a>.</p>
+        <div class="footer-copy">
+            &copy; 2026 Game GXN. Todos los derechos reservados.
         </div>
-
-        <div class="card">
-            <h2>¿Puedo traer mis propios periféricos?</h2>
-            <p>Sí, puedes traer tus propios periféricos, pero recuerda que los locales cuentan con equipos de alta gama para tu comodidad.</p>
-        </div>
-
-        <div class="card">
-            <h2>¿Se realizan torneos o eventos?</h2>
-            <p>Sí, organizamos torneos y eventos regularmente. Puedes revisar nuestra sección de noticias o redes sociales para enterarte de los próximos eventos.</p>
-        </div>
-
-        <div class="card">
-            <h2>¿Tienen membresías o planes recurrentes?</h2>
-            <p>Sí, contamos con planes recurrentes que ofrecen beneficios adicionales y descuentos en alquileres prolongados. Consulta la sección <a href="alquiler.html">Alquilar PC</a> para más detalles.</p>
-        </div>
-
     </div>
-</main>
-
-<footer>
-    <p>© 2026 Game GXN - Todos los derechos reservados</p>
 </footer>
-
 </body>
 </html>

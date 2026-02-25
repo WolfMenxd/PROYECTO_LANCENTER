@@ -1,79 +1,410 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Game GXN - Horarios / Locales</title>
-    <link rel="stylesheet" href="css/estilos.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Game GXN - Horarios / Locales</title>
+  <link rel="stylesheet" href="css/estilos.css">
+
+  <style>
+    .locales-page{
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 35px 20px 25px;
+    }
+
+    .locales-layout{
+      display: grid;
+      grid-template-columns: 230px minmax(0, 1.6fr) 230px;
+      gap: 55px;
+      align-items: start;
+    }
+
+    .locales-header{
+      grid-column: 1 / -1;
+      text-align:center;
+      margin-bottom: 28px;
+    }
+    .locales-header h1{
+      font-size: clamp(30px, 4vw, 52px);
+      text-shadow: 0 0 18px rgba(0, 234, 255, 0.15);
+      margin-bottom: 10px;
+      letter-spacing: .5px;
+    }
+    .locales-header p{
+      max-width: 820px;
+      margin: 0 auto;
+      color: #cfcfcf;
+      line-height: 1.6;
+    }
+
+    .side{
+      position: sticky;
+      top: 90px;
+      display: grid;
+      gap: 22px;
+    }
+
+    .mini-card{
+      background: rgba(0,0,0,0.50);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.35);
+    }
+
+    .mini-card h3{
+      margin: 0 0 10px;
+      color: #00eaff;
+      font-size: 16px;
+      letter-spacing: .3px;
+    }
+
+    .mini-list{
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+      color: #ccc;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .mini-list li{
+      display:flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .mini-note{
+      margin-top:10px;
+      color:#ccc;
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    .card.horarios{
+      max-width: 100%;
+      margin: 18px auto 35px;
+      text-align: left !important;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.45);
+    }
+    .card.horarios ul{
+      list-style: none;
+      padding: 0;
+      margin-top: 10px;
+      display: grid;
+      gap: 10px;
+    }
+    .card.horarios li{
+      display:flex;
+      justify-content: space-between;
+      gap: 16px;
+      color:#ccc;
+      font-size: 15px;
+    }
+
+    .centro .bloques-secundarios{
+      display:grid !important;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+    .centro .bloques-secundarios .card{
+      max-width: none !important;
+      flex: initial !important;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 18px 50px rgba(0,0,0,.45);
+      padding: 28px;
+    }
+
+    .dir{
+      margin: 8px 0 14px;
+      color: #cfcfcf;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    iframe{
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.07) !important;
+      overflow:hidden;
+      height: 220px;
+      display:block;
+    }
+
+    .local-actions{
+      display:flex;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .local-actions a{
+      width: 100%;
+      text-align:center;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: .25s ease;
+      border: 1px solid rgba(255,255,255,0.10);
+      color: white;
+      background: rgba(255,255,255,0.06);
+    }
+    .local-actions a.primary{
+      background: rgba(0,234,255,0.18);
+      border-color: rgba(0,234,255,0.25);
+    }
+    .local-actions a:hover{ transform: translateY(-1px); }
+
+    .payment-list{
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .payment-item{
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 14px;
+      font-weight: 650;
+      color: #fff;
+      user-select: none;
+    }
+    .payment-note{
+      margin-top: 12px;
+      color:#aaa;
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    @media (max-width: 950px){
+      .locales-layout{
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .side{
+        position: static;
+        grid-template-columns: 1fr 1fr;
+      }
+      .centro .bloques-secundarios{
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px){
+      .side{
+        grid-template-columns: 1fr;
+      }
+      .centro .bloques-secundarios{
+        grid-template-columns: 1fr;
+      }
+      .local-actions{
+        flex-direction: column;
+      }
+      .card.horarios{
+        text-align:center !important;
+      }
+      .card.horarios li{
+        justify-content:center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
 <header class="navbar">
-    <div class="logo">GAME GXN</div>
-    <nav>
-        <a href="index.html">Inicio</a>
-        <a href="nosotros.html">Nosotros</a>
-        <div class="dropdown">
-            <button class="dropbtn">Servicios ▾</button>
-            <div class="dropdown-content">
-                <a href="alquiler.html">Alquilar PC</a>
-                <a href="carta.html">Carta</a>
-            </div>
-        </div>
-        <a href="locales.html">Horarios / Locales</a>
-        <a href="faq.html">Preguntas Frecuentes</a>
-    </nav>
+  <div class="logo">GAME GXN</div>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="nosotros.html">Nosotros</a>
+
+    <div class="dropdown">
+      <button class="dropbtn" type="button">Servicios ▾</button>
+      <div class="dropdown-content">
+        <a href="alquiler.html">Alquilar PC</a>
+        <a href="carta.html">Carta</a>
+      </div>
+    </div>
+
+    <a href="locales.html">Horarios / Locales</a>
+    <a href="faq.html">Preguntas Frecuentes</a>
+  </nav>
 </header>
 
-<main class="bloque-principal">
-    <h1>Nuestros Locales</h1>
-    
-    <!-- BLOQUE GENERAL DE HORARIOS -->
-    <div class="card" style="max-width: 600px; margin: 30px auto; text-align: center;">
-        <h2>Horarios Generales</h2>
-        <ul style="list-style: none; padding: 0;">
-            <li>Lunes a Jueves: 12:00 - 22:00</li>
-            <li>Viernes y Sábado: 12:00 - 00:00</li>
-            <li>Domingo: 24H</li>
+<main class="bloque-principal locales-page">
+  <div class="locales-layout">
+
+    <div class="locales-header">
+      <h1>Nuestros Locales</h1>
+      <p>Ubica tu sede más cercana, revisa horarios y entra directo a Google Maps para llegar rápido.</p>
+    </div>
+
+    <aside class="side">
+      <div class="mini-card">
+        <h3>⏰ Horarios</h3>
+        <ul class="mini-list">
+          <li><span>Lun–Jue</span><strong>12:00–22:00</strong></li>
+          <li><span>Vie–Sáb</span><strong>12:00–00:00</strong></li>
+          <li><span>Domingo</span><strong>24H</strong></li>
         </ul>
-    </div>
+      </div>
 
-    <div class="bloques-secundarios">
+      <div class="mini-card">
+        <h3>🧭 Tips para llegar</h3>
+        <ul class="mini-list">
+          <li><span>Usa “Cómo llegar”</span><strong>Maps</strong></li>
+          <li><span>Activa GPS</span><strong>✅</strong></li>
+          <li><span>Evita hora punta</span><strong>⏱️</strong></li>
+        </ul>
+        <p class="mini-note">Los botones de cada local te llevan directo a Google Maps.</p>
+      </div>
 
-        <!-- LOCAL CENTRO -->
+      <div class="mini-card">
+        <h3>🎮 Normas rápidas</h3>
+        <ul class="mini-list">
+          <li><span>Respeto</span><strong>Siempre</strong></li>
+          <li><span>Cuidar equipos</span><strong>Obligatorio</strong></li>
+          <li><span>Reserva</span><strong>Recomendada</strong></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="centro">
+      <div class="card horarios">
+        <h2>Horarios Generales</h2>
+        <ul>
+          <li><span>Lunes a Jueves</span><strong>12:00 - 22:00</strong></li>
+          <li><span>Viernes y Sábado</span><strong>12:00 - 00:00</strong></li>
+          <li><span>Domingo</span><strong>24H</strong></li>
+        </ul>
+      </div>
+
+      <div class="bloques-secundarios">
+
         <div class="card">
-            <h2>Local Surco</h2>
-            <p>Dirección: Av. Angamos Este 234, Lima</p>
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d451.47990992824674!2d-77.00165064522064!3d-12.112069741815217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2spe!4v1771825187271!5m2!1ses-419!2spe"
-                width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy">
-            </iframe>
+          <h2>Local Surco</h2>
+          <p class="dir">📍 Av. Angamos Este 234, Lima</p>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d451.47990992824674!2d-77.00165064522064!3d-12.112069741815217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2spe!4v1771825187271!5m2!1ses-419!2spe"
+            width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy">
+          </iframe>
+          <div class="local-actions">
+            <a class="primary" target="_blank" rel="noopener"
+              href="https://www.google.com/maps/dir/?api=1&destination=-12.112069741815217,-77.00165064522064">Cómo llegar</a>
+            <a target="_blank" rel="noopener"
+              href="https://www.google.com/maps/search/?api=1&query=-12.112069741815217,-77.00165064522064">Ver en Maps</a>
+          </div>
         </div>
 
-        <!-- LOCAL NORTE -->
         <div class="card">
-            <h2>Local Centro</h2>
-            <p>Dirección: Av. Garcilaso de la Vega 124, Lima</p>
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d372.4873207171442!2d-77.03813594691732!3d-12.055064653868543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2spe!4v1771825329944!5m2!1ses-419!2spe"
-                width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy">
-            </iframe>
+          <h2>Local Centro</h2>
+          <p class="dir">📍 Av. Garcilaso de la Vega 124, Lima</p>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d372.4873207171442!2d-77.03813594691732!3d-12.055064653868543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2spe!4v1771825329944!5m2!1ses-419!2spe"
+            width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy">
+          </iframe>
+          <div class="local-actions">
+            <a class="primary" target="_blank" rel="noopener"
+              href="https://www.google.com/maps/dir/?api=1&destination=-12.055064653868543,-77.03813594691732">Cómo llegar</a>
+            <a target="_blank" rel="noopener"
+              href="https://www.google.com/maps/search/?api=1&query=-12.055064653868543,-77.03813594691732">Ver en Maps</a>
+          </div>
         </div>
 
-        <!-- LOCAL SUR -->
         <div class="card">
-            <h2>Local San Isidro</h2>
-            <p>Dirección: Av. Javier Prado Oeste 432, Lima</p>
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d663.6002215083915!2d-77.04635123698333!3d-12.094095147543776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2spe!4v1771825431706!5m2!1ses-419!2spe"
-                width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy">
-            </iframe>
+          <h2>Local San Isidro</h2>
+          <p class="dir">📍 Av. Javier Prado Oeste 432, Lima</p>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d663.6002215083915!2d-77.04635123698333!3d-12.094095147543776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2spe!4v1771825431706!5m2!1ses-419!2spe"
+            width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy">
+          </iframe>
+          <div class="local-actions">
+            <a class="primary" target="_blank" rel="noopener"
+              href="https://www.google.com/maps/dir/?api=1&destination=-12.094095147543776,-77.04635123698333">Cómo llegar</a>
+            <a target="_blank" rel="noopener"
+              href="https://www.google.com/maps/search/?api=1&query=-12.094095147543776,-77.04635123698333">Ver en Maps</a>
+          </div>
         </div>
 
-    </div>
+      </div>
+    </section>
+
+    <aside class="side">
+      <div class="mini-card">
+        <h3>🗺️ Cómo usar el mapa</h3>
+        <ul class="mini-list">
+          <li><span>Zoom</span><strong>+ / -</strong></li>
+          <li><span>Pantalla completa</span><strong>⛶</strong></li>
+          <li><span>Ruta</span><strong>“Cómo llegar”</strong></li>
+        </ul>
+      </div>
+
+      <div class="mini-card">
+        <h3>💳 Métodos de pago</h3>
+        <div class="payment-list">
+          <div class="payment-item">💵 Efectivo</div>
+          <div class="payment-item">💳 Visa / Mastercard</div>
+          <div class="payment-item">📱 Yape</div>
+          <div class="payment-item">📲 Plin</div>
+        </div>
+        <p class="payment-note">Aceptados en todos nuestros locales.</p>
+      </div>
+
+      <div class="mini-card">
+        <h3>❓ Nota</h3>
+        <p class="mini-note" style="margin:0;">
+          Los horarios pueden variar en fechas especiales o feriados.
+          Te recomendamos verificar antes de tu visita o revisar nuestras
+          actualizaciones oficiales.
+        </p>
+      </div>
+    </aside>
+
+  </div>
 </main>
 
-<footer>
-    <p>© 2026 Game GXN - Todos los derechos reservados</p>
+<!-- FOOTER EMPRESARIAL -->
+<footer class="menu-inferior">
+    <div class="footer-container">
+        <div class="footer-secciones">
+
+            <!-- Información legal -->
+            <div class="footer-seccion">
+                <h4>Legal</h4>
+                <a href="#">Términos y Condiciones</a>
+                <a href="#">Política de Privacidad</a>
+            </div>
+
+            <!-- Ayuda y soporte -->
+            <div class="footer-seccion">
+                <h4>Ayuda</h4>
+                <a href="faq.html">Preguntas Frecuentes</a>
+                <a href="carta.html">Promociones</a>
+                <a href="locales.html">Contáctanos</a>
+            </div>
+
+            <!-- Redes sociales -->
+            <div class="footer-seccion">
+                <h4>Síguenos</h4>
+                <a href="https://www.facebook.com" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com" target="_blank">Instagram</a>
+                <a href="https://www.twitter.com" target="_blank">Twitter</a>
+            </div>
+
+        </div>
+
+        <div class="footer-copy">
+            &copy; 2026 Game GXN. Todos los derechos reservados.
+        </div>
+    </div>
 </footer>
 
 </body>
